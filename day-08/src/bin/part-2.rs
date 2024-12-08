@@ -1,12 +1,13 @@
 use std::{
     cmp,
     collections::{HashMap, HashSet},
+    ops::Rem,
 };
 
 type Coord = (i64, i64);
 
-fn gcd(x: i64, y: i64) -> i64 {
-    if x == 0 {
+fn gcd<T: Default + PartialEq + Rem<Output = T> + Copy>(x: T, y: T) -> T {
+    if x == Default::default() {
         return y;
     }
     {
@@ -40,6 +41,7 @@ fn solve(input: &str) -> String {
                 if i == j {
                     continue;
                 }
+
                 let mut diff = (pos[j].0 - pos[i].0, pos[j].1 - pos[i].1);
                 let diff_gcd = gcd(diff.0.abs(), diff.1.abs());
                 diff.0 /= diff_gcd;
