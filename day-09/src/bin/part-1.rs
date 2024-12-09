@@ -18,10 +18,10 @@ fn solve(input: &str) -> String {
     let mut l_idx = 0usize;
 
     loop {
-        while fs_blocks[l_idx] != None {
+        while fs_blocks[l_idx].is_some() {
             l_idx += 1;
         }
-        while fs_blocks[r_idx] == None {
+        while fs_blocks[r_idx].is_none() {
             r_idx -= 1;
 
         }
